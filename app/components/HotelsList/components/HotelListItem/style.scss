@@ -1,0 +1,56 @@
+span{
+  color:#0084ff;
+}
+
+.headline{
+  font-family: arial;
+  font-weight: bold;
+  background-color: lightgray;
+  color:black;
+  font-size: 1em;
+
+}
+.row{
+  box-shadow: 0 0.6rem 1.5rem 0 rgba(0, 0, 0, 0.1);
+  margin: 1%;
+  background-color: lightgrey
+}
+.col{
+  // color: gray;
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+[class*="col-"] {
+  /*Mobile first: set the width to 100% by default*/
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+@media only screen and (min-width: 768px) {
+  /* For everything bigger than 768px */
+  .col{
+    width: 50%;
+    float: left;
+    font-size: 15px;
+    padding-left: 20px;
+  }
+
+
+.headline{
+  font-size: 1.5em;
+}
+}
+
+.carousel .thumbs-wrapper{
+  margin: 5px;
+  overflow: hidden;
+}
+
+.propertyType{
+  color: #0084ff;
+  font-weight: 700;
+}
+.detailsProp{
+  color: #0084ff;
+  font-weight: 300
+}

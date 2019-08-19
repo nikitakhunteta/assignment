@@ -1,0 +1,49 @@
+
+.container {
+  display: flex;
+  flex: 1;
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+}
+
+.paginator {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+
+  .text {
+    margin: 0 0.5rem;
+    // font-size: $;
+    color: #000000;
+  }
+
+  .button {
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #FFF;
+    border: solid 0.01rem darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+
+    &.disabled {
+      background-color: lightgray;
+      cursor: auto;
+      color: #000;
+      opacity: 0.4;
+    }
+  }
+}
