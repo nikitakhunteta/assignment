@@ -3,7 +3,7 @@ import { CHANGE_LOCATION } from './constants';
 // The initial state of the App
 export const initialState = {
   language: 'en',
-  location:''
+  location: ''
 };
 
 function appReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ function appReducer(state = initialState, action) {
     case CHANGE_LOCATION: {
       const newState = {
         ...state,
-        location:action.location
+        location: action.location
       };
 
       return newState;

@@ -8,5 +8,4 @@ describe('<ListingPage />', () => {
     const renderedComponent = shallow(<ListingPage />);
     expect(renderedComponent.contains(<h1>Features</h1>)).toBe(true);
   });
-
 });

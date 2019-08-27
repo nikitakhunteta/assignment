@@ -21,7 +21,9 @@
   form {
     margin-bottom: 1em;
 
-    input {
+     input {
+      @media only screen and (max-width: 768px) { width: 100%;
+        font-size: 1rem;}
       outline: none;
       border-bottom: 1px dotted #999;
       font-size: 2rem;

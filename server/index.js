@@ -4,7 +4,8 @@ const logger = require('./util//logger');
 const argv = require('./util/argv');
 const port = require('./util//port');
 const setup = require('./middlewares/frontendMiddleware');
-const fetchHotels = require('./controllers')
+const fetchHotels = require('./controllers');
+
 const app = express();
 app.get('/api/getHotelsList', fetchHotels);
 
@@ -24,5 +25,5 @@ app.listen(port, host, (err) => {
   if (err) {
     return logger.error(err.message);
   }
-  logger.appStarted(port, prettyHost);
+  return logger.appStarted(port, prettyHost);
 });

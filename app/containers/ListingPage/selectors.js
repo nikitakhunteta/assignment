@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
+
 const selectHotelState = (state) => state.hotels || initialState;
 
 const makeSelectLoading = () => createSelector(
@@ -22,7 +23,7 @@ const makeSelectHotelsData = () => createSelector(
   (state) => state.list
 );
 
-const makeSelectListingInfo =()=> createSelector(
+const makeSelectListingInfo = () => createSelector(
   selectHotelState,
   (state) => state.info
 );

@@ -11,7 +11,7 @@ import {
 /**
  * Load the hotels list, this action starts the request saga
  */
-export function fetchHotelsList({filters,paginator}) {
+export function fetchHotelsList({ filters, paginator }) {
   return {
     type: FETCH_HOTELS,
     filters,
@@ -25,7 +25,7 @@ export function fetchHotelsList({filters,paginator}) {
 export function fetchHotelsSuccess(data) {
   return {
     type: FETCH_HOTELS_SUCCESS,
-    hotels:data,
+    hotels: data,
   };
 }
 

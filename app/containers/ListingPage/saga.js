@@ -3,14 +3,13 @@
  */
 
 import {
-  call, put, select, takeLatest
+  call, put, takeLatest
 } from 'redux-saga/effects';
+import request from 'utils/request';
 import { FETCH_HOTELS } from './constants';
 import { fetchHotelsSuccess, fetchHotelsError } from './actions';
-import request from 'utils/request';
 
-
-export function* getHotels({paginator}) {
+export function* getHotels({ paginator }) {
   const requestURL = `/api/getHotelsList?pageNumber=${paginator.current}`;
 
   try {

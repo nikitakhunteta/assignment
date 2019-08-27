@@ -27,7 +27,7 @@ const App = () => (
       <Route path="/listing/:location" component={ListingPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
-    <Footer/>
+    <Footer />
   </div>
 );
 

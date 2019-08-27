@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { changeLocation } from 'containers/App/actions';
+import { makeSelectLocation } from 'containers/App/selectors';
 import HomePage from './HomePage';
-import { changeLocation  } from 'containers/App/actions';
-import { makeSelectLocation  } from 'containers/App/selectors';
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeSearchLocation: (location)=>dispatch(changeLocation(location))
+  onChangeSearchLocation: (location) => dispatch(changeLocation(location))
 });
 
 const mapStateToProps = createStructuredSelector({

@@ -8,27 +8,23 @@ import { Helmet } from 'react-helmet';
 import './style.scss';
 
 export default class HomePage extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
-  handleFormSubmit=()=>{
-    let { history,location } = this.props;
+  handleFormSubmit = () => {
+    const { history, location } = this.props;
     history.push({
-     pathname: `/listing/${location}`,
+      pathname: `/listing/${location}`,
     });
   }
 
-  onLocationValueChanged=(evt)=>{
+  onLocationValueChanged = (evt) => {
     const {
       onChangeSearchLocation
     } = this.props;
-     onChangeSearchLocation(evt.target.value);
+    onChangeSearchLocation(evt.target.value);
   }
 
   render() {
     const {
-      location, onChangeSearchLocation
+      location
     } = this.props;
 
 
@@ -44,7 +40,7 @@ export default class HomePage extends React.Component {
               Book holiday homes worldwide....
             </h4>
           </section>
-          <section align="center">
+          <section className="centered">
 
             <form onSubmit={this.handleFormSubmit}>
               <label htmlFor="location">
@@ -66,5 +62,6 @@ export default class HomePage extends React.Component {
 
 HomePage.propTypes = {
   location: PropTypes.string,
-  onChangeSearchLocation: PropTypes.func
+  onChangeSearchLocation: PropTypes.func,
+  history: PropTypes.any
 };
