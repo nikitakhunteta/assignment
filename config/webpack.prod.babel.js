@@ -32,11 +32,14 @@ module.exports = require('./webpack.base.babel')({
         minifyCSS: true,
         minifyURLs: true,
       },
+
       inject: true
     }),
   ],
 
   performance: {
+    // This property allows webpack to control what files are used to calculate performance hints.
+    // These options allows you to control how webpack notifies you of assets and entry points that exceed a specific file limit.
     assetFilter: (assetFilename) => !(/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)),
   },
 });

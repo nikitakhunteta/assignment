@@ -43,16 +43,11 @@ const HotelListItem = ({ item }) => (
       <Col>
         <span className="detailsProp">Bedrooms:  </span><span>{item.bedrooms}</span>
       </Col>
-      {item.bathrooms && <Col>
-        <span className="detailsProp">Bathrooms:  </span><span>{item.bathrooms.full > 0 ? `${item.bathrooms.full} Full` : ''} {item.bathrooms.toiletOnly > 0 ? `${item.bathrooms.toiletOnly} Toilet Only` : ''}
-        </span> </Col>}
+      {item.bathrooms && <Col><span className="detailsProp">Bathrooms:  </span><span>{item.bathrooms.full > 0 ? `${item.bathrooms.full} Full` : ''} {item.bathrooms.toiletOnly > 0 ? `${item.bathrooms.toiletOnly} Toilet Only` : ''}</span> </Col>}
       <Col>
-        <span className="detailsProp">Pets:  </span><span> {item.petsAllowed ? 'Allowed': 'Not allowed'}</span>
+        <span className="detailsProp">Pets:  </span><span> {item.petsAllowed ? 'Allowed' : 'Not allowed'}</span>
       </Col>
-      {item.averagePrice && <Col>
-        <span className="detailsProp">Price:  </span><span> {item.averagePrice.value} {item.averagePrice.currencyUnits} {item.averagePrice.periodType}</span>
-      </Col>
-      }
+      {item.averagePrice && <Col><span className="detailsProp">Price:  </span><span> {item.averagePrice.value} {item.averagePrice.currencyUnits} {item.averagePrice.periodType}</span></Col>}
     </Row>
   </Container>
 );

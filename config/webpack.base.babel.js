@@ -6,8 +6,10 @@ const path = require('path');
 const webpack = require('webpack');
 
 process.noDeprecation = true;
-
+// modue bundler for appolication
+// Loaders let you run preprocessors on files as they’re imported.This allows you to bundle static resources beyond JavaScript
 module.exports = (options) => ({
+
   mode: options.mode,
   entry: options.entry,
   output: Object.assign(
@@ -18,6 +20,7 @@ module.exports = (options) => ({
     },
     options.output
   ), // Merge with env dependent settings
+  // how to treat different kind of modules
   module: {
     rules: [
       {
@@ -30,9 +33,8 @@ module.exports = (options) => ({
           }
         }
       },
-
       {
-        // Preprocess our own .scss files
+        // Preprocess our own .scss files: sass to css; css to JS; outputs css into style
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader']
@@ -43,11 +45,12 @@ module.exports = (options) => ({
         include: /node_modules/,
         use: ['style-loader', 'css-loader']
       },
-      {
+      { // The file-loader resolves import/require() on a file into a url and emits the file into the output directory.
         test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
         use: 'file-loader'
       },
       {
+        // The file-loader resolves import/require() on a file into a url and emits the file into the output directory.
         test: /\.(jpg|png|gif)$/,
         use: 'file-loader'
       },
@@ -55,45 +58,39 @@ module.exports = (options) => ({
         test: /\.html$/,
         use: 'html-loader'
       },
-      {
-        test: /\.(mp4|webm)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000
-          }
-        }
-      }
     ]
   },
   plugins: options.plugins.concat([
+    // Automatically load modules instead of having to import or require them everywhere.
     new webpack.ProvidePlugin({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch'
     }),
 
-    // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; UglifyJS will automatically
-    // drop any unreachable code.
+    // define global constants which can be configured at compile time.
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     })
   ]),
+  // Configure how modules are resolved.
   resolve: {
     modules: ['app', 'node_modules'],
+    // the order in which files without extensions in import line are resolved
     extensions: ['.js', '.jsx', '.scss', '.react.js'],
+    // will prioritise the file in browser in a node module import, eg, import * from ''''
     mainFields: ['browser', 'jsnext:main', 'main']
   },
   devtool: options.devtool,
-  target: 'web', // Make web variables accessible to webpack, e.g. window
+  target: 'web', // Make web variables accessible to webpack, e.g. window // Compile for usage in a browser-like environment
   performance: options.performance || {},
   optimization: {
     namedModules: true,
     splitChunks: {
       name: 'vendor',
-      minChunks: 2
+      minChunks: 2, // Minimum number of chunks that must share a module before splitting.
+      chunks: 'all' // include all types of chunks // for sharing
     }
   }
 });

@@ -8,7 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = require('./webpack.base.babel')({
+const baseWebPack = './webpack.base.babel';
+module.exports = require(baseWebPack)({
   mode: 'development',
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
@@ -25,8 +26,13 @@ module.exports = require('./webpack.base.babel')({
   // Add development plugins
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    // The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles.
+    // The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags
+    // basically the final html file
     new HtmlWebpackPlugin({
+      // place js at bottom of body element
       inject: true,
+      // where to inject
       template: 'app/index.html'
     }),
     new CircularDependencyPlugin({
